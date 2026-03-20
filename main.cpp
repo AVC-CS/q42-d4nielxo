@@ -28,7 +28,13 @@ int main() {
         rate = 4.80;
     }
 
-    double totalCharge = (distance / 500.00) * rate;
+    double totalCharge;
+    if (distance < 500) {
+        totalCharge = rate;
+    } else {
+        totalCharge = (distance / 500.00) * rate;
+    }
+
     cout << totalCharge << endl;
 
     return 0;
