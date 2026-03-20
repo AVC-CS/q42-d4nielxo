@@ -2,22 +2,34 @@
 #include <iomanip>
 using namespace std;
 
-int main()
-{
-    const double rate1 = 1.10;
-    const double rate2 = 2.20;
-    const double rate3 = 3.70;
-    const double rate4 = 4.80;
-    double total_charge;
-    double weight, distance, rate;
-
-    cout << "Enter the package weight and distance: ";
+int main() {
+    double weight, distance;
     cin >> weight >> distance;
 
-    // TODO
+    cout << fixed << setprecision(2);
 
-    cout << setw(10) << left << setprecision(2) << fixed;
-    cout << total_charge << endl;
+    if (weight <= 0 || weight > 20) {
+        cout << "Invalid weight" << endl;
+        return 0;
+    }
+    if (distance < 10 || distance > 3000) {
+        cout << "Invalid distance" << endl;
+        return 0;
+    }
+
+    double rate;
+    if (weight <= 2) {
+        rate = 1.10;
+    } else if (weight <= 6) {
+        rate = 2.20;
+    } else if (weight <= 10) {
+        rate = 3.70;
+    } else {
+        rate = 4.80;
+    }
+
+    double totalCharge = (distance / 500) * rate;
+    cout << totalCharge << endl;
 
     return 0;
 }
